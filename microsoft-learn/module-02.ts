@@ -12,27 +12,48 @@ console.log(z) */
     TODO: Modify the code to add types to the variable declarations. 
     The resulting JavaScript should look the same as the original example when you're done. */
 
-let firstName;
-let lastName;
-let fullName;
-let age;
-let ukCitizen;
+let firstName: string;
+let lastName: string;
+let age: number;
+let ukCitizen: boolean;
 
-firstName = 'Rebecca';
-lastName = 'Smith';
-age = 42;
-ukCitizen = false;
-fullName = firstname + " " + lastname;
 
-if (ukCitizen) {
-    console.log("My name is " + fullName + ", I'm " + age + ", and I'm a citizen of the United Kingdom.");
+type FirstName = {
+    firstName: string;
+}
+
+type LastName = {
+    lastName: string;
+}
+
+type Person = {
+    age: number;
+    ukCitizen: boolean;
+}
+
+type FullName = FirstName & LastName & Person;
+
+const fullName: FullName = {
+    firstName: 'Allana',
+    lastName: 'Mendes',
+    age: 26,
+    ukCitizen: false
+}
+
+//NOTES: fazer um tipo que tenha o fullName com first + last name
+
+
+console.log(`meu nome é ${fullName.firstName} ${fullName.lastName}`);
+
+if (fullName.ukCitizen) {
+    console.log("My name is " + fullName.firstName + ", I'm " + fullName.age + ", and I'm a citizen of the United Kingdom.");
 } else {
-    console.log("My name is " + fullName + ", I'm " + age + ", and I'm not a citizen of the United Kingdom.");
+    console.log("My name is " + fullName.firstName + fullName.lastName + ", I'm " + fullName.age + ", and I'm not a citizen of the United Kingdom.");
 }
 
 /* EXERCISE 2
-   TODO: You can use types to ensure operation outcomes. Run the code as is and then modify 
-   it to have strongly typed variables. Then, address any errors you find so that the result 
+TODO: You can use types to ensure operation outcomes. Run the code as is and then modify 
+it to have strongly typed variables. Then, address any errors you find so that the result 
    returned to a is 12. */
 
 let x;
@@ -86,4 +107,8 @@ for (let i = 0; i < 10; i++) {
 }
 
 console.log(randomNumbers);
+
+
+
+
 
